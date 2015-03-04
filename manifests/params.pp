@@ -10,8 +10,8 @@ class glexec::params {
     $log_destination            = 'syslog'
     $log_level                  = '3'
     $log_file                   = '/var/log/glexec/glexec_log'
-    $syslog_facility            = 'LOG_DAEMON'
     $package_name               = 'osg-wn-client-glexec'
     $package_ensure             = 'present'
+    $syslog_facility            = 'LOG_DAEMON'
 
 }

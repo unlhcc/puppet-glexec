@@ -58,9 +58,9 @@ class glexec (
     $log_destination            = $glexec::params::log_destination,
     $log_level                  = $glexec::params::log_level,
     $log_file                   = $glexec::params::log_file,
+    $package_name               = $glexec::params::package_name,
+    $package_ensure             = $glexec::params::package_ensure,
     $syslog_facility            = $glexec::params::syslog_facility,
-    $package_name               = $glexec::package_name,
-    $package_ensure             = $glexec::package_ensure,
     ) inherits glexec::params {
 
     validate_absolute_path($conf_file)
@@ -69,9 +69,9 @@ class glexec (
     validate_absolute_path($lcmaps_log_file)
     validate_absolute_path($log_file)
     validate_re($log_destination, [ '^syslog', '^file' ], 'Error: log_destination must be either syslog or file')
-    validate_string($syslog_facility)
     validate_string($package_name)
     validate_re($package_ensure, [ '^present', '^latest', '^absent' ], 'Error: package_ensure must be either present, latest, or absent')
+    validate_string($syslog_facility)
 
     package { $package_name:
         ensure => $package_ensure,
